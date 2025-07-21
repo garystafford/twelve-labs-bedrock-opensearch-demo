@@ -23,7 +23,7 @@ git clone https://github.com/garystafford/twelve-labs-opensearch-demo.git
 cd twelve-labs-opensearch-demo
 ```
 
-Rename `python-dotenv` file and update environment variables:
+Rename `python-dotenv` file:
 
 Mac:
 
@@ -35,6 +35,20 @@ Windows:
 
 ```bat
 rename env.txt .env
+```
+
+Enter the following environment variables in the `.env` file:
+
+```ini
+AWS_REGION=<Your AWS Region>
+AWS_ACCESS_KEY_ID=<Your AWS Access Key ID>
+AWS_SECRET_ACCESS_KEY=<Your AWS Secret Access Key>
+AWS_SESSION_TOKEN=<Your AWS Session Token>
+
+S3_VIDEO_STORAGE_BUCKET_MARENGO=<Your S3 Bucket Name>
+S3_VIDEO_STORAGE_BUCKET_PEGASUS=<Your S3 Bucket Name>
+
+OPENSEARCH_ENDPOINT=<Your OpenSearch Endpoint>
 ```
 
 Create a Python virtual environment for the Jupyter Notebook:
