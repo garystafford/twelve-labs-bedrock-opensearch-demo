@@ -54,7 +54,14 @@ Windows:
 python -m venv .venv
 .venv\Scripts\activate
 
+python -m pip install pip -Uq
 python -m pip install -r requirements.txt -Uq
+```
+
+Check for FFmpeg:
+
+```bash
+ffmpeg -version
 ```
 
 ### Run the Code
