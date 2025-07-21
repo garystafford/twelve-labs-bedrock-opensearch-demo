@@ -2,7 +2,7 @@ import json
 import os
 import time
 
-from data import VideoEmbeddings, VideoAnalysis, OpenSearchDocument
+from data import OpenSearchDocument, VideoAnalysis, VideoEmbeddings
 
 LOCAL_EMBEDDINGS_DIRECTORY = "bedrock_marengo_embeddings"
 LOCAL_ANALYSIS_DIRECTORY = "bedrock_pegasus_analyses"

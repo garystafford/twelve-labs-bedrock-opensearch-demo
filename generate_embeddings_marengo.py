@@ -1,16 +1,20 @@
-import time
-from botocore.config import Config
-import boto3
-import json
 import os
+import time
+import json
+
+import boto3
+from botocore.config import Config
+from dotenv import load_dotenv
 
 from utilities import Utilities
 from data import VideoEmbeddings
 
+load_dotenv()  # Loads variables from .env file
 
-AWS_REGION = "us-east-1"
+
+AWS_REGION = os.getenv("AWS_REGION")
 MODEL_ID = "twelvelabs.marengo-embed-2-7-v1:0"
-S3_VIDEO_STORAGE_BUCKET = "garystaf-twelvelabs-demo-us-east-1"
+S3_VIDEO_STORAGE_BUCKET_MARENGO = os.getenv("S3_VIDEO_STORAGE_BUCKET_MARENGO")
 S3_SOURCE_PREFIX = "commercials"
 S3_DESTINATION_PREFIX = "embeddings"
 LOCAL_DESTINATION_DIRECTORY = "bedrock_marengo_embeddings"
@@ -36,7 +40,7 @@ def main() -> None:
 
     # Get the list of MP4 files from the specified S3 bucket
     video_file_names = Utilities.get_list_of_video_names_from_s3(
-        s3_client, S3_VIDEO_STORAGE_BUCKET, S3_SOURCE_PREFIX
+        s3_client, S3_VIDEO_STORAGE_BUCKET_MARENGO, S3_SOURCE_PREFIX
     )
 
     # Wait for the job to complete and then read the output
@@ -49,12 +53,12 @@ def main() -> None:
             continue
 
         video_key = f"{S3_SOURCE_PREFIX}/{video_file_name}"
-        video_s3_uri = f"s3://{S3_VIDEO_STORAGE_BUCKET}/{video_key}"
+        video_s3_uri = f"s3://{S3_VIDEO_STORAGE_BUCKET_MARENGO}/{video_key}"
         print(f"Generating analysis for video: {video_file_name}")
 
         # Get metadata for the S3 object
         metadata = Utilities.get_s3_object_metadata(
-            s3_client, S3_VIDEO_STORAGE_BUCKET, video_key
+            s3_client, S3_VIDEO_STORAGE_BUCKET_MARENGO, video_key
         )
 
         # Generate embeddings for the video
@@ -110,7 +114,7 @@ def generate_embeddings(client: boto3.client, account_id: str, video_path: str) 
         },
         outputDataConfig={
             "s3OutputDataConfig": {
-                "s3Uri": f"s3://{S3_VIDEO_STORAGE_BUCKET}/{S3_DESTINATION_PREFIX}/",
+                "s3Uri": f"s3://{S3_VIDEO_STORAGE_BUCKET_MARENGO}/{S3_DESTINATION_PREFIX}/",
             }
         },
     )
@@ -127,7 +131,7 @@ def download_embeddings_from_s3(client: boto3.client, s3_key: str) -> VideoEmbed
         VideoEmbeddings: The video embedding object.
     """
     s3_object = client.get_object(
-        Bucket=S3_VIDEO_STORAGE_BUCKET,
+        Bucket=S3_VIDEO_STORAGE_BUCKET_MARENGO,
         Key=s3_key,
     )
     embeddings = json.loads(s3_object["Body"].read().decode("utf-8"))

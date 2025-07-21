@@ -1,16 +1,20 @@
-import boto3
+import os
 import json
 import time
 import random
+
+from dotenv import load_dotenv
+import boto3
 from botocore.config import Config
-import os
 
 from utilities import Utilities
 from data import VideoAnalysis
 
-AWS_REGION = "us-west-2"
-MODEL_ID = "us.twelvelabs.pegasus-1-2-v1:0"
-S3_VIDEO_STORAGE_BUCKET = "garystaf-twelvelabs-demo-us-west-2"
+load_dotenv()  # Loads variables from .env file
+
+AWS_REGION = os.getenv("AWS_REGION")
+MODEL_ID = os.getenv("MODEL_ID")
+S3_VIDEO_STORAGE_BUCKET_PEGASUS = os.getenv("S3_VIDEO_STORAGE_BUCKET_PEGASUS")
 S3_SOURCE_PREFIX = "commercials"
 LOCAL_DESTINATION_DIRECTORY = "bedrock_pegasus_analyses"
 
@@ -34,7 +38,7 @@ def main() -> None:
 
     # Get the list of MP4 files from the specified S3 bucket
     video_file_names = Utilities.get_list_of_video_names_from_s3(
-        s3_client, S3_VIDEO_STORAGE_BUCKET, S3_SOURCE_PREFIX
+        s3_client, S3_VIDEO_STORAGE_BUCKET_PEGASUS, S3_SOURCE_PREFIX
     )
 
     # Wait for the job to complete and then read the output
@@ -46,9 +50,7 @@ def main() -> None:
             print(f"Skipping {video_file_name}, already processed.")
             continue
 
-        video_path = (
-            f"s3://{S3_VIDEO_STORAGE_BUCKET}/{S3_SOURCE_PREFIX}/{video_file_name}"
-        )
+        video_path = f"s3://{S3_VIDEO_STORAGE_BUCKET_PEGASUS}/{S3_SOURCE_PREFIX}/{video_file_name}"
         print(f"Generating analysis for video: {video_file_name}")
 
         # Define the prompts for title, summary, and keywords

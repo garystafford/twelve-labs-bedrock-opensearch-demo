@@ -10,6 +10,7 @@ Code for the video, [Multi-Vector Semantic Search with TwelveLabs on Bedrock and
 
 - Python 3.12+
 - AWS credentials
+- Amazon S3 bucket
 - Amazon OpenSearch Serverless collection (optional)
 - [FFmpeg](https://ffmpeg.org/) (optional for keyframe generation)
 

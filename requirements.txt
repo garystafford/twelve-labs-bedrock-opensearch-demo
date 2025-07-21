@@ -1,4 +1,12 @@
 boto3
 botocore
-python-ffmpeg
+matplotlib
+nbformat
+opensearch-py
+pandas
+Pillow
+plotly
 pydantic
+python-dotenv
+python-ffmpeg
+scikit-learn

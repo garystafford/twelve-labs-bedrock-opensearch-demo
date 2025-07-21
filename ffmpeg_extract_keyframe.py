@@ -1,4 +1,5 @@
 import os
+
 from ffmpeg import FFmpeg
 
 LOCAL_KEYFRAMES_DIRECTORY = "keyframes"
