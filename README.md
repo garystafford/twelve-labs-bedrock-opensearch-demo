@@ -1,6 +1,6 @@
-# Multi-Vector Semantic Search: Advanced Video Search with TwelveLabs and Amazon OpenSearch
+# Multi-Vector Semantic Search with TwelveLabs on Bedrock and OpenSearch
 
-Code for the video, [Multi-Vector Semantic Search with TwelveLabs on Bedrock and Amazon OpenSearch](https://youtu.be/aXyPRyCiqfE). How TwelveLabs AI Models and Amazon OpenSearch Serverless enable multi-vector semantic and hybrid search for video content.
+Code for the video demonstration, [Multi-Vector Semantic Search with TwelveLabs on Bedrock and OpenSearch](https://youtu.be/VCFWTKJ7TRY). How TwelveLabs AI Models on Amazon Bedrock and OpenSearch enable multi-vector semantic and hybrid search for video content.
 
 ![Architecture](./previews/twelve_labs_on_bedrock.png)
 
