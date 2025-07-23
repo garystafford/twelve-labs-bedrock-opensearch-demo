@@ -6,7 +6,7 @@ Code for the video demonstration, [Multi-Vector Semantic Search with TwelveLabs 
 
 ## Usage Instructions
 
-## Prerequisites
+### Prerequisites
 
 - Python 3.12+
 - AWS credentials
@@ -14,7 +14,7 @@ Code for the video demonstration, [Multi-Vector Semantic Search with TwelveLabs 
 - Amazon OpenSearch Serverless collection (optional)
 - [FFmpeg](https://ffmpeg.org/) (optional for keyframe generation)
 
-## Installation
+### Installation
 
 Clone the repository:
 
@@ -83,6 +83,12 @@ Check for FFmpeg:
 ffmpeg -version
 ```
 
+### Upload the Videos and Keyframes to S3
+
+Videos should be uploaded to the Pegasus and Marengo Amazon S3 buckets in `us-east-1` and `us-west-2`. Two buckets are necessary, today, because of AWS Region-based limitations of Amazon Bedrock cross-region inference with Amazon S3.
+
+Keyframes should be uploaded to the Pegasus Amazon S3 buckets in `us-east-1`.
+
 ### Run the Code
 
 Run the following Python scripts.
@@ -94,9 +100,7 @@ python ./generate_analyses_pegasus.py
 python ./prepare_opensearch_documents.py
 ```
 
-Access the Jupyter Notebook for all OpenSearch-related code:
-
-[twelve-labs-bedrock-demo.ipynb](twelve-labs-bedrock-demo.ipynb)
+Access the Jupyter Notebook for all OpenSearch-related code: [twelve-labs-bedrock-demo.ipynb](twelve-labs-bedrock-demo.ipynb)
 
 ## Alternative: Running OpenSearch in Docker
 
