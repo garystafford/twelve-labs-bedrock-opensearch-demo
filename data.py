@@ -13,7 +13,7 @@ class VideoEmbeddingSegment(BaseModel):
 class VideoEmbeddings(BaseModel):
     videoName: str
     s3URI: str
-    keyframeURI: str
+    keyframeURL: str
     dateCreated: str
     sizeBytes: int
     durationSec: float = 0.0
@@ -35,7 +35,7 @@ class VideoAnalysis(BaseModel):
 class OpenSearchDocument(BaseModel):
     videoName: str
     s3URI: str
-    keyframeURI: str
+    keyframeURL: str
     title: str
     summary: str
     keywords: List[str]

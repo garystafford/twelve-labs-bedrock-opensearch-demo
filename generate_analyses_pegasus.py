@@ -12,9 +12,10 @@ from data import VideoAnalysis
 
 load_dotenv()  # Loads variables from .env file
 
-AWS_REGION = os.getenv("AWS_REGION")
-MODEL_ID = os.getenv("MODEL_ID")
+AWS_REGION = os.getenv("AWS_REGION_PEGASUS")
 S3_VIDEO_STORAGE_BUCKET_PEGASUS = os.getenv("S3_VIDEO_STORAGE_BUCKET_PEGASUS")
+
+MODEL_ID = "us.twelvelabs.pegasus-1-2-v1:0"
 S3_SOURCE_PREFIX = "commercials"
 LOCAL_DESTINATION_DIRECTORY = "bedrock_pegasus_analyses"
 

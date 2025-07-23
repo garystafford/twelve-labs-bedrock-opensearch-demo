@@ -74,7 +74,7 @@ def prepare_opensearch_documents(
     document = OpenSearchDocument(
         videoName=analysis.videoName,
         s3URI=analysis.s3URI,
-        keyframeURI=embeddings.keyframeURI,
+        keyframeURL=embeddings.keyframeURL,
         title=analysis.title,
         summary=analysis.summary,
         keywords=analysis.keywords,

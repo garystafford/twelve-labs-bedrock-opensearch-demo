@@ -12,9 +12,11 @@ from data import VideoEmbeddings
 load_dotenv()  # Loads variables from .env file
 
 
-AWS_REGION = os.getenv("AWS_REGION")
-MODEL_ID = "twelvelabs.marengo-embed-2-7-v1:0"
+AWS_REGION = os.getenv("AWS_REGION_MARENGO")
 S3_VIDEO_STORAGE_BUCKET_MARENGO = os.getenv("S3_VIDEO_STORAGE_BUCKET_MARENGO")
+CLOUDFRONT_URL = os.getenv("CLOUDFRONT_URL")
+
+MODEL_ID = "twelvelabs.marengo-embed-2-7-v1:0"
 S3_SOURCE_PREFIX = "commercials"
 S3_DESTINATION_PREFIX = "embeddings"
 LOCAL_DESTINATION_DIRECTORY = "bedrock_marengo_embeddings"
@@ -79,6 +81,7 @@ def main() -> None:
         video_embeddings = VideoEmbeddings(
             videoName=video_file_name,
             s3URI=video_s3_uri,
+            keyframeURL=f"{CLOUDFRONT_URL}/{video_file_name.replace('.mp4', '.jpg')}",
             dateCreated=time.strftime("%Y-%m-%dT%H:%M:%S %Z", time.gmtime()),
             sizeBytes=metadata["ContentLength"],
             contentType=metadata["ContentType"],

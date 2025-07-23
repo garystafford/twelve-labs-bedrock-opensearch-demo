@@ -2,7 +2,7 @@
 
 Code for the video, [Multi-Vector Semantic Search with TwelveLabs on Bedrock and Amazon OpenSearch](https://youtu.be/aXyPRyCiqfE). How TwelveLabs AI Models and Amazon OpenSearch Serverless enable multi-vector semantic and hybrid search for video content.
 
-![Architecture](twelve_labs_on_bedrock.png)
+![Architecture](./previews/twelve_labs_on_bedrock.png)
 
 ## Usage Instructions
 
@@ -40,7 +40,9 @@ rename env.txt .env
 Enter the following environment variables in the `.env` file:
 
 ```ini
-AWS_REGION=<Your AWS Region>
+AWS_REGION_MARENGO=<Your AWS Region>
+AWS_REGION_PEGASUS=<Your AWS Region>
+
 AWS_ACCESS_KEY_ID=<Your AWS Access Key ID>
 AWS_SECRET_ACCESS_KEY=<Your AWS Secret Access Key>
 AWS_SESSION_TOKEN=<Your AWS Session Token>
@@ -49,6 +51,8 @@ S3_VIDEO_STORAGE_BUCKET_MARENGO=<Your S3 Bucket Name>
 S3_VIDEO_STORAGE_BUCKET_PEGASUS=<Your S3 Bucket Name>
 
 OPENSEARCH_ENDPOINT=<Your OpenSearch Endpoint>
+
+CLOUDFRONT_URL=<Your Amazon CloudFront Distribution>
 ```
 
 Create a Python virtual environment for the Jupyter Notebook:
@@ -136,6 +140,16 @@ GET tv-commercials-index/_search
   }
 }
 ```
+
+## Visualization Examples
+
+![Result Grid](./previews/grid.png)
+
+![Search Results](./previews/3d_search_results.png)
+
+![PCA 2D Plot](./previews/pca_kmeans.png)
+
+![t-SNE 2D Plot](./previews/ksne_kmeans.png)
 
 ---
 
