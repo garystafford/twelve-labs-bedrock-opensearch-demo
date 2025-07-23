@@ -1,3 +1,10 @@
+# Summary: This script generates video analyses using the Amazon Bedrock Pegasus model. 
+#          It retrieves video files from an S3 bucket, processes each video to generate a 
+#          title, summary, and keywords, and saves the results in a local directory.
+# Author: Gary A. Stafford
+# Date: 2025-07-23
+# License: MIT License
+
 import os
 import json
 import time

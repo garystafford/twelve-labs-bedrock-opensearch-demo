@@ -1,3 +1,9 @@
+# Summary: This script extracts the a keyframe from each video file in a specified directory and saves it as a JPEG image.
+#          It uses the FFmpeg library to handle video processing.
+# Author: Gary A. Stafford
+# Date: 2025-07-23
+# License: MIT License
+
 import os
 
 from ffmpeg import FFmpeg

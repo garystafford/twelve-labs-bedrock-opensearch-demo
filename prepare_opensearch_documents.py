@@ -1,3 +1,10 @@
+# Summary: This script prepares OpenSearch documents from video analyses and embeddings.
+#          It reads video analysis and embedding data from local JSON files, constructs OpenSearch documents,
+#          and saves them in a specified directory.
+# Author: Gary A. Stafford
+# Date: 2025-07-23
+# License: MIT License
+
 import json
 import os
 import time

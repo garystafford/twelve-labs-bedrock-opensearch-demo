@@ -1,3 +1,10 @@
+# Summary: This script generates video embeddings using the Amazon Bedrock Marengo model.
+#          It retrieves video files from an S3 bucket, processes each video to generate embeddings,
+#          and saves the results in a local directory.
+# Author: Gary A. Stafford
+# Date: 2025-07-23
+# License: MIT License
+
 import os
 import time
 import json
