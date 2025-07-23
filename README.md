@@ -141,13 +141,25 @@ GET tv-commercials-index/_search
 }
 ```
 
-## Visualization Examples
+## Previews from Notebook
+
+Television commercials used in video
+
+![Previews](./previews/video_preview.png)
+
+Preview of search results with keyframe previews
 
 ![Result Grid](./previews/grid.png)
 
+Plotly 3D scatter plot of search results
+
 ![Search Results](./previews/3d_search_results.png)
 
+All video segments plotted using PCA and k-means clustering
+
 ![PCA 2D Plot](./previews/pca_kmeans.png)
+
+All video segments plotted using t-SNE and k-means clustering
 
 ![t-SNE 2D Plot](./previews/ksne_kmeans.png)
 
