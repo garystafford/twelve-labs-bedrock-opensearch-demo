@@ -441,3 +441,4 @@ bedrock_pegasus_analyses/*.json
 documents/*.json
 keyframes/*.jpg
 videos/*.mp4
+*.draw.io
