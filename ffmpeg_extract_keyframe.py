@@ -30,13 +30,17 @@ def main():
 
 def extract_first_keyframe(input_path, output_path, timestamp):
     """
-    Extracts the first keyframe from a video file and saves it as a JPEG image.
+    Extracts the first keyframe from a video file and saves it as a JPEG image if it does not already exist.
 
     :param input_path: Path to the input video file.
     :param output_path: Path where the extracted keyframe will be saved.
+    :param timestamp: Timestamp in HH:MM:SS format where the keyframe should be extracted.
     """
-    ffmpeg = FFmpeg().input(input_path, ss=timestamp).output(output_path, vframes=1)
-    ffmpeg.execute()
+    if not os.path.exists(output_path):
+        print(f"Extracting keyframe from {input_path} at {timestamp} to {output_path}")
+        # Use FFmpeg to extract the keyframe
+        ffmpeg = FFmpeg().input(input_path, ss=timestamp).output(output_path, vframes=1)
+        ffmpeg.execute()
 
 
 if __name__ == "__main__":
