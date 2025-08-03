@@ -143,6 +143,48 @@ GET tv-commercials-index/_search
     "match_all": {}
   }
 }
+
+GET tv-commercials-index/_search
+{
+  "query": {
+    "terms": {
+      "keywords": [
+        "car",
+        "city"
+      ]
+    }
+  },
+    "_source": false,
+    "fields": ["title", "durationSec"]
+}
+
+GET tv-commercials-index/_search
+{
+  "query": {
+    "nested": {
+      "path": "embeddings",
+      "query": {
+        "knn": {
+          "embeddings.embedding": {
+            "vector": [
+              0.059814453125,
+              -0.017333984375,
+              0.01153564453125,
+              ...
+            ],
+            "k": 6
+          }
+        }
+      }
+    }
+  },
+  "size": 6,
+  "_source": {
+    "excludes": [
+      "embeddings.embedding"
+    ]
+  }
+}
 ```
 
 ## Previews from Notebook
