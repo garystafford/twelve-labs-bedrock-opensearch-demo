@@ -60,10 +60,11 @@ Create a Python virtual environment for the Jupyter Notebook:
 Mac:
 
 ```bash
-python -m pip install virtualenv -Uq
+python -m pip install virtualenv -Uq --break-system-packages
 python -m venv .venv
 source .venv/bin/activate
 
+python -m pip install pip -Uq
 python -m pip install -r requirements.txt -Uq
 ```
 
@@ -85,7 +86,7 @@ ffmpeg -version
 
 ### Upload the Videos and Keyframes to S3
 
-Videos should be uploaded to the Pegasus and Marengo Amazon S3 buckets in `us-east-1` and `us-west-2`. Two buckets are necessary, today, because of AWS Region-based limitations of Amazon Bedrock cross-region inference with Amazon S3.
+Videos should be uploaded to the Pegasus and Marengo Amazon S3 buckets in `us-east-1` and `us-west-2`. Two buckets are necessary today because of AWS Region-based limitations of Amazon Bedrock cross-region inference with Amazon S3.
 
 Keyframes should be uploaded to the Pegasus Amazon S3 buckets in `us-east-1`.
 
@@ -104,7 +105,7 @@ Access the Jupyter Notebook for all OpenSearch-related code: [twelve-labs-bedroc
 
 ## Alternative: Running OpenSearch in Docker
 
-As an alternative to AWS, you can run OpenSearch locally using Docker. This is intended for development environments only and is not secure.
+As an alternative to AWS, you can run OpenSearch locally using Docker. This is intended for development environments only and is not intended for production use.
 
 Mac:
 
